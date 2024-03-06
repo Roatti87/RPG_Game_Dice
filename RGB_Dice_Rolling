@@ -1,0 +1,45 @@
+
+
+import random
+
+running = True
+
+while running == True:
+    rolls = "a"
+    sides = "a"
+    total = 0
+    
+    while sides.isnumeric() == False:
+        sides = input("How many sides this dice have? ")
+        if sides.isnumeric() == False:
+            print("You must enter a number!")
+            continue
+        if int(sides) < 4:
+            print("Dice must have a minimum 4 sides!")
+            sides = "a"
+    sides = int(sides)
+
+    while rolls.isnumeric() == False:
+        rolls = input("How many times to roll this die? ")
+        if rolls.isnumeric() == False:
+            print("You must enter a number!")
+            continue 
+        if int(rolls) < 1:
+            print("You have to roll at least once!")
+            rolls = "a"
+    rolls = int(rolls)
+
+    for x in range(rolls):
+        roll = random.randint(1,sides)
+        total += roll
+        print (x+1,": ", roll)
+    print("Total:", total)
+    print("\n")
+
+    do_again = input("Roll again? (Y/N)")
+    if do_again.upper() == "N":
+        break
+    print("\n")
+
+print("Thanks for playing!")
+
